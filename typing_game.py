@@ -1,4 +1,5 @@
 import time
+import datetime
 import sys
 
 def main():
@@ -47,7 +48,16 @@ def main():
     # Display results
     print("\nGame Over!")
     print(f"Your typing speed: {typing_speed:.2f} WPM")
-    print(f"Your accuracy: {accuracy: .2f}%")
+    print(f"Your accuracy: {accuracy:.2f}%")
+
+    record_speed_accuracy(typing_speed, accuracy)
+
+
+def record_speed_accuracy(typing_speed, accuracy):
+    with open('stats', 'a') as f:
+        f.write('-----------------------\n')
+        f.write(f'{datetime.datetime.today().date()} {typing_speed:.2f} {accuracy:.2f}\n')
+
 
 if __name__ == '__main__':
     main()
